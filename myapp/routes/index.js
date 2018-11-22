@@ -34,17 +34,20 @@ function index(app) {
         
         let real_arr = [];
 
-        let re1 = new RegExp("#([^\s#]+)")
-
         arr.forEach(element => {
           real_arr = real_arr.concat(element.match(/#([^\s#]+)/g));
           //console.log(real_arr);
         });
+
+        var counts = {};
         
-        res.send(real_arr);
-
-        let real_real_arr = [];
-
+        for (var i = 0; i < real_arr.length; i++) {
+          var num = real_arr[i];
+          counts[num] = counts[num] ? ++counts[num]: 1;
+        }
+        
+        
+        res.send(counts);
         
 
         //var pattern = '/#([^\s#]+)/';
@@ -72,13 +75,4 @@ function index(app) {
   });
   
 }
-
-/*request(url, function (error, response, body) {
-        if(error) throw error
-        var pattern = '/#([^\s#]+)/';
-        console.log(pattern.match(body.text()));
-      })
-
-      res.send(":(");
-       */
 
