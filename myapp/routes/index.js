@@ -8,6 +8,7 @@ function index(app) {
   app.get('/hashtags/:tag', function(req, res) {
     var url = encodeURI('https://www.instagram.com/explore/tags/'+req.params.tag);
     request(url, function (error, response, body) {
+      //TODO: variable names
         if(error) throw error
         let $ = cheerio.load(body);
         let title = $('body');
@@ -31,7 +32,21 @@ function index(app) {
         });
 
         
-        res.send(arr);
+        let real_arr = [];
+
+        let re1 = new RegExp("#([^\s#]+)")
+
+        arr.forEach(element => {
+          real_arr = real_arr.concat(element.match(/#([^\s#]+)/g));
+          //console.log(real_arr);
+        });
+        
+        res.send(real_arr);
+
+        let real_real_arr = [];
+
+        
+
         //var pattern = '/#([^\s#]+)/';
         //var pattern = /{"text":"(.*?)"}/;
         //let c = a.match(pattern);
