@@ -9,14 +9,23 @@ function index(app) {
     var url = encodeURI('https://www.instagram.com/explore/tags/'+req.params.tag);
     request(url, function (error, response, body) {
         if(error) throw error
-        var $ = cheerio.load(body);
-        $('html > body > span > section > main > article').each(function(){
-          var title_info = $(this);
-          var title_info_text = title_info.text();
+        let $ = cheerio.load(body);
+        let title = $('body');
+        let a = title.children().next().html();
 
-          console.log(title_info_text);
-        })
-    });
+        //res.send(a);
+        //var pattern = '/#([^\s#]+)/';
+        var pattern = /{"text":"(.*?)"}/;
+        let match = pattern.exec(a);
+        
+        console.log("length : "+match.length)
+        match.forEach(i => {
+          console.log(i);
+        });
+      })
+
+       res.send(":)");
+    //});
     // request(url, function(error, response, html){
       
     //     var $ = cheerio.load(html);
@@ -28,4 +37,13 @@ function index(app) {
   });
   
 }
+
+/*request(url, function (error, response, body) {
+        if(error) throw error
+        var pattern = '/#([^\s#]+)/';
+        console.log(pattern.match(body.text()));
+      })
+
+      res.send(":(");
+       */
 
