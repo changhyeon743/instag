@@ -11,20 +11,40 @@ function index(app) {
         if(error) throw error
         let $ = cheerio.load(body);
         let title = $('body');
-        let a = title.children().next().html();
-
-        //res.send(a);
-        //var pattern = '/#([^\s#]+)/';
-        var pattern = /{"text":"(.*?)"}/;
-        let match = pattern.exec(a);
+        let a = title.children().next().html().replace('window._sharedData = ','').slice(0,-1);
         
-        console.log("length : "+match.length)
-        match.forEach(i => {
-          console.log(i);
-        });
-      })
+        let user = null
+        try {
+          user = JSON.parse(a);
+        } catch(err) {
+          console.error(err)
+        }
 
-       res.send(":)");
+        let datas = user["entry_data"]["TagPage"][0]["graphql"]["hashtag"]["edge_hashtag_to_media"]["edges"];
+
+        let arr = [];
+        datas.forEach(element => {
+          let temp = element["node"]["edge_media_to_caption"]["edges"][0];
+          if (temp!=null) {
+            arr.push(temp["node"]["text"]);
+          }
+        });
+
+        
+        res.send(arr);
+        //var pattern = '/#([^\s#]+)/';
+        //var pattern = /{"text":"(.*?)"}/;
+        //let c = a.match(pattern);
+        // let match = pattern.exec(a);
+        
+        // console.log("length : "+match.length)
+        // match.forEach(i => {
+        //   console.log(i);
+        // });
+      })
+      
+
+       //res.send(":)");
     //});
     // request(url, function(error, response, html){
       
