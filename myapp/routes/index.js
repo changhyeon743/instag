@@ -7,6 +7,7 @@ var request = require('request');
 function index(app) {
   app.get('/hashtags/:tag', function(req, res) {
     var url = encodeURI('https://www.instagram.com/explore/tags/'+req.params.tag);
+    var count = req.query.count;
     request(url, function (error, response, body) {
       //TODO: variable names
         if(error) throw error
@@ -45,9 +46,37 @@ function index(app) {
           var num = real_arr[i];
           counts[num] = counts[num] ? ++counts[num]: 1;
         }
+
+        delete counts["#"+req.params.tag];
+        delete counts["null"];
+
+        var result = [];
+
+        while(count>0) {
+          var max = {
+            count:0
+          };
+          var index = 0;
+          Object.keys(counts).map(function(v) {
+            if (counts[v] > max.count) {
+              max = {
+                name : v,
+                count: counts[v]
+              };
+            }
+          });
+          delete counts[max.name];
+          result.push(max);
+          count--;
+        }
+
         
         
-        res.send(counts);
+        
+        res.send({
+          count: real_arr.length,
+          data: result
+        });
         
 
         //var pattern = '/#([^\s#]+)/';
@@ -75,4 +104,5 @@ function index(app) {
   });
   
 }
+
 
