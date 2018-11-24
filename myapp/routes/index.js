@@ -12,68 +12,83 @@ function index(app) {
       //TODO: variable names
         if(error) throw error
         let $ = cheerio.load(body);
-        let title = $('body');
-        let a = title.children().next().html().replace('window._sharedData = ','').slice(0,-1);
+
+        //HTML data: 가공되지 않은 데이터
+        //replace, slice 는 json 형태로 만들기 위해 필요한 코드.
+        let htmlData = $('body').children().next().html().replace('window._sharedData = ','').slice(0,-1);
         
-        let user = null
+        ///htmlData 를 json으로 파싱
+        let jsonData = null;
         try {
-          user = JSON.parse(a);
+          jsonData = JSON.parse(htmlData);
         } catch(err) {
           console.error(err)
         }
 
-        let datas = user["entry_data"]["TagPage"][0]["graphql"]["hashtag"]["edge_hashtag_to_media"]["edges"];
-
-        let arr = [];
-        datas.forEach(element => {
+        //이 코드는 html 파일을 읽으며 작성
+        let temp_data = jsonData["entry_data"]["TagPage"][0]["graphql"]["hashtag"]["edge_hashtag_to_media"]["edges"];
+        ///captions 에는 태그를 포함한 유저의 글이 모아짐.
+        let captions = [];
+        temp_data.forEach(element => {
           let temp = element["node"]["edge_media_to_caption"]["edges"][0];
+          //if ["edges"][0] isn't null ~>
           if (temp!=null) {
-            arr.push(temp["node"]["text"]);
+            captions.push(temp["node"]["text"]);
           }
         });
 
         
-        let real_arr = [];
-
-        arr.forEach(element => {
-          real_arr = real_arr.concat(element.match(/#([^\s#]+)/g));
+        //captions에서 정규표현식을 이용해 해쉬태그 추출
+        let hashtags = [];
+        captions.forEach(element => {
+          //#으로 시작해 공백이나 새로운#이 나타나지 않을 때까지 계속
+          hashtags = hashtags.concat(element.match(/#([^\s#]+)/g));
         });
 
-        var counts = {};
+        //중복되는 요소들을 Dicitonary 형태로 합침
+        var dic = {};
         
-        for (var i = 0; i < real_arr.length; i++) {
-          var num = real_arr[i];
-          counts[num] = counts[num] ? ++counts[num]: 1;
+        for (var i = 0; i < hashtags.length; i++) {
+          var num = hashtags[i];
+          dic[num] = dic[num] ? ++dic[num]: 1;
         }
 
-        delete counts["#"+req.params.tag];
-        delete counts["null"];
+        //나온 결과 중, #태그 (자기 자신)와 null 값은 삭제
+        delete dic["#"+req.params.tag];
+        delete dic["null"];
 
+        //예외처리
+        if (dic.length > count) {
+          res.status(404).send("Fail");
+        }
+        //console.log(dic);
+        //최종결과
         var result = [];
-
+        
+        
+        //count가 0이 될때까지 반복
         while(count>0) {
+          //최댓값 찾기
           var max = {
             count:0
           };
-          var index = 0;
-          Object.keys(counts).map(function(v) {
-            if (counts[v] > max.count) {
+          Object.keys(dic).map(function(v) {
+            if (dic[v] > max.count) {
               max = {
                 name : v,
-                count: counts[v]
+                count: dic[v]
               };
             }
           });
-          delete counts[max.name];
+
+          //찾고나서 찾은 값은 삭제
+          delete dic[max.name];
           result.push(max);
           count--;
         }
 
-        
-        
-        
         res.send({
-          count: real_arr.length,
+          count: hashtags.length,
           data: result
         });
         
@@ -83,5 +98,4 @@ function index(app) {
   });
   
 }
-
 
