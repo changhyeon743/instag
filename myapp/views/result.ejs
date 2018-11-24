@@ -1,0 +1,164 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .left {
+            width: 50%;
+            height: 100%;
+            background-color: white;
+            float: left;
+        }
+
+        .right > div {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .content {
+            position: absolute;
+            top:407px;
+            font-family: "NotoSans-Regular";
+            font-size: 22px;
+            font-weight: normal;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: normal;
+            letter-spacing: -0.4px;
+            color: #222222;
+        }
+        .blue {
+            color: blue;
+        }
+        
+        
+        .right {
+            float: right;
+            width: 50%;
+            height: 100%;
+        }
+
+        .tag {
+            width: 138px;
+            height: 83px;
+            font-family: 'NotoSans-Black', sans-serif;
+            font-size: 56px;
+            font-weight: 900;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: normal;
+            letter-spacing: -1.1px;
+            color: #222222;
+        }
+        .re {
+            width: 124px;
+            height: 33px;
+            font-family: "NotoSans-Regular";
+            font-size: 22px;
+            font-weight: normal;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: normal;
+            letter-spacing: -0.4px;
+            color: #a7a7a7;
+        }
+
+        .rediv {
+            position: absolute;
+            top:157px;
+        }
+        #actionBtn {
+            width: 274px;
+            height: 72px;
+            border-radius: 42px;
+            box-shadow: 8px 10px 12px 0 rgba(63, 51, 255, 0.3);
+            background-color: #3f33ff;
+
+            font-family: "NotoSans-Regular";
+            font-size: 22px;
+            font-weight: 500;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: normal;
+            letter-spacing: -0.4px;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .big_box {
+            overflow: auto;
+            width: 85%;
+            height: 100%;
+            position: relative;
+
+            margin: 0 auto;
+        }
+
+        .small_box {
+            position: relative;
+            top: 157px; 
+            float: left;
+            text-align: center;
+            width: 45%;
+            height: 200px;
+            border-radius: 8px;
+            border-width: 2px;
+            border-color: #3f33ff;
+        }
+        
+        .small_box>.title {
+            float: left;
+            font-family: 'NotoSans-Black', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            letter-spacing: -0.7px;
+            text-align: center;
+            color: #3f33ff;
+        }
+        .small_box>.content {
+            float: left;
+            font-family: 'NotoSans-Regular', sans-serif;
+            font-size: 16px;
+            font-weight: 900;
+            letter-spacing: -0.32px;
+            text-align: center;
+            color: #3f33ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="left">
+        <div class="big_box">
+            <div class="small_box">
+                <span class="title">#바다스타그램</span>
+                <span class="content">최근 2,310개</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="right">
+        <div>
+            <div class="rediv">
+                <img src="images/back.svg" alt="" width="22" height="22">
+                <span class="re">&nbsp;다시 검색하기</span>
+            </div>
+
+            <div class="content">
+                <span class="tag">'바다'</span><br>
+                와 관련있는 인스타 태그를 찾았습니다. 
+                <br><br>
+                쓸만한 태그를 선택해서 클립보드에 복사하세요.
+                <br>
+                <br>
+                <button id="actionBtn">태그 전부 복사</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

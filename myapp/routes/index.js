@@ -5,9 +5,14 @@ var request = require('request');
 
 /* GET home page. */
 function index(app) {
+  
+
   app.get('/hashtags/:tag', function(req, res) {
     var url = encodeURI('https://www.instagram.com/explore/tags/'+req.params.tag);
-    var count = req.query.count;
+    var count = 10;
+    if (req.query.count) {
+      count = req.query.count;
+    }
     request(url, function (error, response, body) {
       //TODO: variable names
         if(error) throw error
