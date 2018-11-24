@@ -87,7 +87,7 @@
             var str = document.getElementById("search").value;
             $.ajax({
                 type : "GET",
-                url : "/hashtags/"+str,
+                url : "/result",
                 dataType : "json",
                 error : function(){
                     alert('통신실패!!');

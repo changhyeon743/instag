@@ -56,7 +56,8 @@
             letter-spacing: -1.1px;
             color: #222222;
         }
-        .re {
+
+        .reBtn {
             width: 124px;
             height: 33px;
             font-family: "NotoSans-Regular";
@@ -73,10 +74,12 @@
             position: absolute;
             top:157px;
         }
+
         #actionBtn {
             width: 274px;
             height: 72px;
             border-radius: 42px;
+            border-width: 0px;
             box-shadow: 8px 10px 12px 0 rgba(63, 51, 255, 0.3);
             background-color: #3f33ff;
 
@@ -96,7 +99,6 @@
             width: 85%;
             height: 100%;
             position: relative;
-
             margin: 0 auto;
         }
 
@@ -106,14 +108,23 @@
             float: left;
             text-align: center;
             width: 45%;
-            height: 200px;
+            max-height: 200px;
             border-radius: 8px;
             border-width: 2px;
             border-color: #3f33ff;
+            border-style: solid;
+            margin: 5px;
+
+            font-family: 'NotoSans-Regular', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: -0.32px;
+            text-align: center;
+            color: #3f33ff;
+
         }
         
         .small_box>.title {
-            float: left;
             font-family: 'NotoSans-Black', sans-serif;
             font-size: 36px;
             font-weight: 900;
@@ -121,23 +132,18 @@
             text-align: center;
             color: #3f33ff;
         }
-        .small_box>.content {
-            float: left;
-            font-family: 'NotoSans-Regular', sans-serif;
-            font-size: 16px;
-            font-weight: 900;
-            letter-spacing: -0.32px;
-            text-align: center;
-            color: #3f33ff;
-        }
+
     </style>
 </head>
 <body>
     <div class="left">
         <div class="big_box">
-            <div class="small_box">
+            <div class="small_box"> 
+                <br><br>
                 <span class="title">#바다스타그램</span>
-                <span class="content">최근 2,310개</span>
+                <br>
+                최근 ‘바다스타그램’태그가 <br>포함된 게시글 2,310개
+                <br><br><br>
             </div>
         </div>
     </div>
@@ -146,7 +152,7 @@
         <div>
             <div class="rediv">
                 <img src="images/back.svg" alt="" width="22" height="22">
-                <span class="re">&nbsp;다시 검색하기</span>
+                <span class="reBtn">&nbsp;다시 검색하기</span>
             </div>
 
             <div class="content">
