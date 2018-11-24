@@ -87,14 +87,14 @@
             var str = document.getElementById("search").value;
             $.ajax({
                 type : "GET",
-                url : "/result",
-                dataType : "json",
+                url : "/result/"+str,
+                dataType : "html",
                 error : function(){
                     alert('통신실패!!');
                 },
                 success : function(data){
                     alert("통신데이터 값 : " + data) ;
-                    console.log(data);
+                    $("html").load(data);
                 }
                 
             });
@@ -112,7 +112,7 @@
     </div>
 </div>
 
-<p class="notice">인스태그 사용 정책 및 개인정보 보호에 관한 정책</p>
+<p class="notice">인스택 사용 정책 및 개인정보 보호에 관한 정책</p>
 
 </body>
 </html>
