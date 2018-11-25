@@ -29,6 +29,9 @@ function index(app) {
         } catch(err) {
           console.error(err)
         }
+        if (jsonData == null) {
+          res.sendStatus(404);
+        }
 
         //이 코드는 html 파일을 읽으며 작성
         let temp_data = jsonData["entry_data"]["TagPage"][0]["graphql"]["hashtag"]["edge_hashtag_to_media"]["edges"];
@@ -93,6 +96,7 @@ function index(app) {
         }
 
         res.send({
+          status: 200,
           count: hashtags.length,
           data: result
         });

@@ -13,9 +13,10 @@ function index(app) {
 
     app.get('/result/:tag',function(req,res) {
         request(encodeURI("http://localhost:3000/hashtags/"+req.params.tag+"?count=10"), function (error, response, body) {
-            console.log('body:', JSON.stringify(body)); // Print the HTML for the Google homepage.
+            var temp = JSON.parse(body);
+            //console.log('body:', temp); // Print the HTML for the Google homepage.
             
-            res.render('result',{datas: body.data,tag:req.params.tag});
+            res.render('result',{count: temp.count,datas: temp.data,tag:req.params.tag});
         });
     })
 }

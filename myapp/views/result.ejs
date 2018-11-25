@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
             margin: 0;
             padding: 0;
         }
+
         .left {
             width: 50%;
             height: 100%;
@@ -15,7 +17,7 @@
             float: left;
         }
 
-        .right > div {
+        .right>div {
             width: 100%;
             height: 100%;
             position: relative;
@@ -23,7 +25,7 @@
 
         .content {
             position: absolute;
-            top:407px;
+            top: 407px;
             font-family: "NotoSans-Regular";
             font-size: 22px;
             font-weight: normal;
@@ -33,11 +35,12 @@
             letter-spacing: -0.4px;
             color: #222222;
         }
+
         .blue {
             color: blue;
         }
-        
-        
+
+
         .right {
             float: right;
             width: 50%;
@@ -72,7 +75,7 @@
 
         .rediv {
             position: absolute;
-            top:157px;
+            top: 157px;
         }
 
         #actionBtn {
@@ -104,7 +107,7 @@
 
         .small_box {
             position: relative;
-            top: 157px; 
+            top: 157px;
             float: left;
             text-align: center;
             width: 45%;
@@ -113,7 +116,7 @@
             border-width: 2px;
             border-color: #3f33ff;
             border-style: solid;
-            margin: 5px;
+            margin: 10px;
 
             font-family: 'NotoSans-Regular', sans-serif;
             font-size: 16px;
@@ -123,29 +126,36 @@
             color: #3f33ff;
 
         }
-        
+
         .small_box>.title {
             font-family: 'NotoSans-Black', sans-serif;
-            font-size: 36px;
+
+            font-size: 1.7em;
             font-weight: 900;
             letter-spacing: -0.7px;
             text-align: center;
             color: #3f33ff;
         }
-
     </style>
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+
 </head>
+
 <body>
     <div class="left">
         <div class="big_box">
-            <%= datas %>
-            <div class="small_box"> 
+            <% for (var i = 0; i < datas.length; i++) { %>
+            <div class="small_box">
                 <br><br>
-                <span class="title">#바다스타그램</span>
+                <span class="title"><%= datas[i].name %></span>
                 <br>
-                최근 ‘바다스타그램’태그가 <br>포함된 게시글 2,310개
+                최근 ‘바다스타그램’태그가 <br>포함된 게시글
+                <%= datas[i].count %>개
                 <br><br><br>
             </div>
+            <% } %>
+
         </div>
     </div>
 
@@ -153,21 +163,45 @@
         <div>
             <div class="rediv">
                 <img src="/images/back.svg" alt="" width="22" height="22">
-                <span class="reBtn">&nbsp;다시 검색하기</span>
+                <a href="http://localhost:3000/search" style="text-decoration: none"><span class="reBtn">&nbsp;다시 검색하기</span></a>
             </div>
 
             <div class="content">
-                총 65개의 태그를 분석해
+                총
+                <%= count %>개의 태그를 분석해
                 <br>
-                <span class="tag">'바다'</span><br>
-                와 관련있는 인스타그램 태그를 찾았습니다. 
+                <span class="tag">'
+                    <%= tag %>'</span><br>
+                와(과) 관련있는 인스타그램 태그를 찾았습니다.
                 <br><br>
                 쓸만한 태그를 선택해서 클립보드에 복사하세요.
                 <br>
                 <br>
-                <button id="actionBtn">태그 전부 복사</button>
+                <button id="actionBtn" onclick="copy()">태그 전부 복사</button>
             </div>
         </div>
     </div>
+
+    <script>
+        function copy() {
+            var titles = document.getElementsByClassName("title");
+            var str = "";
+
+            for(var i =0;i<titles.length;i++){
+                str+=titles[i].innerHTML + " ";
+            }
+            
+            const el = document.createElement('textarea');
+            el.value = str;
+            el.setAttribute('readonly', '');
+            el.style.position = 'absolute';
+            el.style.left = '-9999px';
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+        }
+    </script>
 </body>
+
 </html>

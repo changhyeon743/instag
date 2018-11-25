@@ -85,19 +85,7 @@
         var isLoading = false;
         function search(){
             var str = document.getElementById("search").value;
-            $.ajax({
-                type : "GET",
-                url : "/result/"+str,
-                dataType : "html",
-                error : function(){
-                    alert('통신실패!!');
-                },
-                success : function(data){
-                    alert("통신데이터 값 : " + data) ;
-                    $("html").load(data);
-                }
-                
-            });
+            window.location.href=encodeURI("http://localhost:3000/result/"+str)
         };
     </script>
 </head>
