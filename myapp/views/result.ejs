@@ -116,7 +116,7 @@
             border-width: 2px;
             border-color: #3f33ff;
             border-style: solid;
-            margin: 10px;
+            margin: 1.5%;
 
             font-family: 'NotoSans-Regular', sans-serif;
             font-size: 16px;
@@ -136,6 +136,31 @@
             text-align: center;
             color: #3f33ff;
         }
+
+         @media (max-width: 1127px) {
+            .left {
+                width: 100%;
+            }
+
+            .right {
+                padding: 10px;
+                text-align: center;
+                float: left;
+                width: 100%;
+            }
+            
+            
+            .right > div {
+                
+            }
+            .content {
+                text-align: center;
+                top: 307px;
+                left: 0px;
+                font-size: 21px;
+            }
+        }
+
     </style>
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 
@@ -170,7 +195,7 @@
                 <span class="tag">' <%= tag %> '</span><br>
                 와(과) 관련있는 인스타그램 태그를 찾았습니다.
                 <br><br>
-                쓸만한 태그를 선택해서 클립보드에 복사하세요.
+                아래 버튼을 눌러 클립보드에 복사하세요.
                 <br>
                 <br>
                 <button id="actionBtn" onclick="copy()">태그 전부 복사</button>
