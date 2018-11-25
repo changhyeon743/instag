@@ -2,6 +2,7 @@ module.exports = index;
 
 var request = require('request');
 
+
 function index(app) {
     app.get('/',function(req,res) {
         res.render('index',{url:"https://cdn.pixabay.com/photo/2016/11/29/04/19/beach-1867285_1280.jpg"});
