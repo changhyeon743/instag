@@ -5,6 +5,7 @@
     <title>Instag</title>
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     <link href="/stylesheets/search.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <script>
         var isLoading = false;
         function search() {
@@ -15,7 +16,7 @@
 </head>
 <body>
 
-<img class="logo" src="images/logo-main-invers.svg" style=<%= url %>/>
+<img class="logo" src="images/logo-main-invers.svg" style=<%= style %>/>
 
 <div class="search-box">
     <input type="text" name="" class="search-text" id="search" onkeypress="if(event.keyCode==13) {search(); return false;}"/>

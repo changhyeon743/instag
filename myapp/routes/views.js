@@ -12,7 +12,7 @@ function index(app) {
     })
 
     app.get('/search',function(req,res) {
-        res.render('search',{url:"background:url("+getRandomImage()+" center"});
+        res.render('search',{style:"background:url("+getRandomImage()+" center"});
     })
 
     app.get('/result/:tag',function(req,res) {
