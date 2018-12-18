@@ -36,7 +36,7 @@
             <div class="content">
                 <span class="tag">'
                     <%= tag %> '</span><br>
-                    <br>
+                <br>
                 와(과) 가장 최근에 함께 쓰인 해시태그
                 <%= datas.length %>개를 찾았습니다.
                 <br>
@@ -49,6 +49,42 @@
     </div>
 
     <script>
+        function copy(el) {
+            // resolve the element
+            el = (typeof el === 'string') ? document.querySelector(el) : el;
+
+            // handle iOS as a special case
+            if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
+
+                // save current contentEditable/readOnly status
+                var editable = el.contentEditable;
+                var readOnly = el.readOnly;
+
+                // convert to editable with readonly to stop iOS keyboard opening
+                el.contentEditable = true;
+                el.readOnly = true;
+
+                // create a selectable range
+                var range = document.createRange();
+                range.selectNodeContents(el);
+
+                // select the range
+                var selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(range);
+                el.setSelectionRange(0, 999999);
+
+                // restore contentEditable/readOnly to original state
+                el.contentEditable = editable;
+                el.readOnly = readOnly;
+            }
+            else {
+                el.select();
+            }
+
+            // execute copy command
+            document.execCommand('copy');
+        }
         function copy() {
             var titles = document.getElementsByClassName("title");
             var str = "";
@@ -57,15 +93,7 @@
                 str += titles[i].innerHTML + " ";
             }
 
-            const el = document.createElement('textarea');
-            el.value = str;
-            el.setAttribute('readonly', '');
-            el.style.position = 'absolute';
-            el.style.left = '-9999px';
-            document.body.appendChild(el);
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
+            copy(el);
         }
     </script>
 </body>
