@@ -85,6 +85,7 @@ body{
     border-radius: 42px;
     border-width: 0px;
     box-shadow: 8px 10px 12px 0 rgba(63, 51, 255, 0.3);
+    
     background-color: #3f33ff;
 
     font-family: "NotoSans-Regular";
@@ -116,7 +117,6 @@ body{
     font-weight: 500;
     letter-spacing: -0.32px;
     text-align: center;
-    color: #3f33ff;
 
 }
 
@@ -127,7 +127,6 @@ body{
     font-weight: 900;
     letter-spacing: -0.7px;
     text-align: center;
-    color: #3f33ff;
 }
 
  @media (max-width: 1127px) {
