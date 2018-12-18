@@ -16,7 +16,7 @@
             if (strMatch!=null) {
                 //Option on
                 var no= str.replace(/[^0-9]/g,'');
-                str = str.replace(/:[\d]/,"");
+                str = str.replace(/:[\d]*/,"");
                 window.location.href=encodeURI(window.location.origin+"/result/"+str+"?count="+no);
             } else {
                 //Option off
