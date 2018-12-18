@@ -10,7 +10,18 @@
         var isLoading = false;
         function search() {
             var str = document.getElementById("search").value;
-            window.location.href=encodeURI("http://18.191.231.70/result/"+str)
+            //해시태그:8
+            var strMatch = str.match(/.*:\d/);
+            
+            if (strMatch!=null) {
+                //Option on
+                var no= str.replace(/[^0-9]/g,'');
+                str = str.replace(/:[\d]/,"");
+                window.location.href=encodeURI(window.location.origin+"/result/"+str+"?count="+no);
+            } else {
+                //Option off
+                window.location.href=encodeURI(window.location.origin+"/result/"+str)
+            }
         };
     </script>
 </head>

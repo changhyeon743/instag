@@ -2,12 +2,21 @@
     margin: 0;
     padding: 0;
 }
-
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 .left {
     width: 50%;
     height: 100%;
     background-color: white;
-    float: left;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y:scroll;
+
+    padding: 0 60px;
 }
 
 .right>div {
@@ -35,7 +44,6 @@
 
 
 .right {
-    float: right;
     width: 50%;
     height: 100%;
 }
@@ -90,14 +98,6 @@
     color: #ffffff;
 }
 
-.big_box {
-    overflow: auto;
-    width: 85%;
-    height: 100%;
-    position: relative;
-    margin: 0 auto;
-}
-
 .small_box {
     position: relative;
     top: 157px;
@@ -131,12 +131,19 @@
 }
 
  @media (max-width: 1127px) {
+     body{
+         flex-direction: column;
+         height: auto;
+     }
     .left {
         width: 100%;
+        height: 90vh;
+        flex-direction: column;
+        overflow-x: scroll;
+        overflow-y: none;
     }
 
     .right {
-        padding: 10px;
         text-align: center;
         float: left;
         width: 100%;
