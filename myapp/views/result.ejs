@@ -12,16 +12,18 @@
 
 <body>
     <div class="left">
-            <% for (var i = 0; i < datas.length; i++) { %>
-            <div class="small_box">
-                <br><br>
-                <span class="title"><%= datas[i].name %></span>
-                <br>
-                최근 ‘<%= datas[i].name %>’ 태그가 <br>포함된 게시글
-                <%= datas[i].count %>개
-                <br><br><br>
-            </div>
-            <% } %>
+        <% for (var i = 0; i < datas.length; i++) { %>
+        <div class="small_box">
+            <br><br>
+            <span class="title">
+                <%= datas[i].name %></span>
+            <br>
+            최근 ‘
+            <%= datas[i].name %>’ 태그가 <br>포함된 게시글
+            <%= datas[i].count %>개
+            <br><br><br>
+        </div>
+        <% } %>
     </div>
 
     <div class="right">
@@ -32,9 +34,12 @@
             </div>
 
             <div class="content">
-                <span class="tag">' <%= tag %> '</span><br>
-                와(과) 가장 최근에 함께 쓰인 해시태그 <%= datas.length %>개를 찾았습니다.
-                <br><br>
+                <span class="tag">'
+                    <%= tag %> '</span><br>
+                    <br>
+                와(과) 가장 최근에 함께 쓰인 해시태그
+                <%= datas.length %>개를 찾았습니다.
+                <br>
                 <!--아래 버튼을 눌러 클립보드에 복사하세요.-->
                 <br>
                 <br>
@@ -48,10 +53,10 @@
             var titles = document.getElementsByClassName("title");
             var str = "";
 
-            for(var i =0;i<titles.length;i++){
-                str+=titles[i].innerHTML + " ";
+            for (var i = 0; i < titles.length; i++) {
+                str += titles[i].innerHTML + " ";
             }
-            
+
             const el = document.createElement('textarea');
             el.value = str;
             el.setAttribute('readonly', '');
