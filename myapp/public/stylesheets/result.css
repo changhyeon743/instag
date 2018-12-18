@@ -87,7 +87,8 @@ body{
     box-shadow: 8px 10px 12px 0 rgba(63, 51, 255, 0.3);
     
     background-color: #3f33ff;
-
+    position: absolute;
+    top: 65%;
     font-family: "NotoSans-Regular";
     font-size: 22px;
     font-weight: 500;
