@@ -33,8 +33,7 @@
         <% for (var i = 0; i < datas.length; i++) { %>
         <div class="small_box">
             <br><br>
-            <span class="title">
-                <%= datas[i].name %></span>
+            <span class="title"><%= datas[i].name %></span>
             <br>
             최근 ‘
             <%= datas[i].name %>’ 태그가 <br>포함된 게시글
@@ -61,49 +60,15 @@
                 <!--아래 버튼을 눌러 클립보드에 복사하세요.-->
                 <br>
                 <br>
-                <button id="actionBtn" onclick="copy()">태그 전부 복사</button>
             </div>
+                <button id="actionBtn" data-clipboard-text="Hello">태그 전부 복사</button>
         </div>
     </div>
 
     <script>
-        function copy(el) {
-            // resolve the element
-            el = (typeof el === 'string') ? document.querySelector(el) : el;
-
-            // handle iOS as a special case
-            if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
-
-                // save current contentEditable/readOnly status
-                var editable = el.contentEditable;
-                var readOnly = el.readOnly;
-
-                // convert to editable with readonly to stop iOS keyboard opening
-                el.contentEditable = true;
-                el.readOnly = true;
-
-                // create a selectable range
-                var range = document.createRange();
-                range.selectNodeContents(el);
-
-                // select the range
-                var selection = window.getSelection();
-                selection.removeAllRanges();
-                selection.addRange(range);
-                el.setSelectionRange(0, 999999);
-
-                // restore contentEditable/readOnly to original state
-                el.contentEditable = editable;
-                el.readOnly = readOnly;
-            }
-            else {
-                el.select();
-            }
-
-            // execute copy command
-            document.execCommand('copy');
-        }
-        function copy() {
+        alert(hashtagsToString());
+        
+        function hashtagsToString() {
             var titles = document.getElementsByClassName("title");
             var str = "";
 
@@ -111,7 +76,7 @@
                 str += titles[i].innerHTML + " ";
             }
 
-            copy(str);
+            return str;
         }
     </script>
 </body>

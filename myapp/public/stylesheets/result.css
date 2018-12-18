@@ -177,7 +177,9 @@ body{
     #actionBtn {
         position: absolute;
         left: 50%;
-        top: 120%;
+        top: 40%;
+        height: 52px;
+        width: 87%;
         transform: translate(-50%, -50%);
     }
 }
