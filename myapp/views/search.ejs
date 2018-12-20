@@ -11,6 +11,9 @@
         var isLoading = false;
         function search() {
             var str = document.getElementById("search").value;
+            if (str == "") {
+                return;
+            }
             //해시태그:8
             var strMatch = str.match(/.*:\d/);
             
