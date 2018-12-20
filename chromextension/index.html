@@ -1,28 +1,10 @@
 <html>
 
 <head>
-	<script>
-		
-		function setIFrameHeight(obj) {
-			alert(obj);
-		}
-
-
-		function updateHeight() {
-			var iframe = document.getElementById("main");
-			if (iframe.attributes.src != "http://18.191.231.70/search") {
-				document.body.height = "500px";
-			} else {
-				document.body.height = "130px";
-			}
-		}
-		
-	</script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="index.js"></script>
 </head>
-
-<body style="width:420px; height:130px;">
-	<iframe id="main" onload="updateHeight()" width="100%" height="100%" src="http://18.191.231.70/search" frameborder="0"></iframe>
-	<span onclick="this.innerHTML = 'aaaaa'">dfffsaf</span>
+<body id="body" style="width:420px; height:130px;">
+	<iframe id="main" style="width: 100%; height: 100%;" src="http://127.0.0.1:3000/search" frameborder="0"></iframe>
 </body>
-
 </html>
