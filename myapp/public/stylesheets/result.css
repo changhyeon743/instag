@@ -184,3 +184,12 @@ body{
         transform: translate(-50%, -50%);
     }
 }
+
+@media(max-height:500px) {
+    .small_box {
+        padding: 0 30px 30px;
+    }
+    #actionBtn {
+        top: 45%;
+    }
+}
