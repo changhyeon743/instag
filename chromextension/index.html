@@ -1,5 +1,27 @@
 <html>
-	<body> 
-		<iframe width="420" height="130" src="http://18.191.231.70/search" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-	</bodyi>
+
+<head>
+	<script>
+		function setIFrameHeight(obj) {
+			alert(obj);
+		}
+
+
+		function updateHeight() {
+			var iframe = document.getElementById("main");
+			if (iframe.attributes.src != "http://18.191.231.70/search") {
+				iframe.height = "500px";
+			} else {
+				iframe.height = "130px";
+			}
+		}
+		
+	</script>
+</head>
+
+<body style="width:420px; height:130px;">
+	<iframe id="main" onload="updateHeight()" width="100%" height="100%" src="http://127.0.0.1:3000/search" frameborder="0"></iframe>
+	
+</body>
+
 </html>
