@@ -1,6 +1,6 @@
 {
 	"name" : "INSTAG",
-	"description" : "Instagram Tag Service",
+	"description" : "A website which can recommend you some Instagram tags by typing subject you want",
 	"version" : "1.0",
 	"manifest_version" : 2,
 	"browser_action": {
