@@ -3,7 +3,7 @@ module.exports = index;
 var request = require('request');
 
 function getRandomImage() {
-    var n = Math.floor(Math.random() * 6) + 1; //1~4
+    var n = Math.floor(Math.random() * 4) + 1; //1~4
     return "/images/"+n+".jpg";
 }
 
