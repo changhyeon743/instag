@@ -35,6 +35,17 @@ img.left {
     object-fit: cover;
 }
 
+#contact {
+    text-decoration: none;
+    color: black;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    font-family: 'NotoSans-Regular';
+    font-size: 16px;
+    letter-spacing: -0.4px;
+}
+
 .right>div>.top {
     position: absolute;
     top: 173px;
@@ -98,6 +109,8 @@ img.left {
     img.left {
         -webkit-filter: brightness(50%);
     }
+
+    
 
     .right>div>.top {
         position: absolute;
