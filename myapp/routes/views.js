@@ -3,7 +3,7 @@ module.exports = index;
 var request = require('request');
 
 function getRandomImage() {
-    var n = Math.floor(Math.random() * 4) + 1; //1~4
+    var n = Math.floor(Math.random() * 6) + 1; //1~4
     return "/images/"+n+".jpg";
 }
 
@@ -21,6 +21,7 @@ function index(app) {
         if (req.query.count) {
             count = req.query.count;
         }
+        
         request(encodeURI("http://localhost:3000/hashtags/"+req.params.tag+"?count="+count), function (error, response, body) {
             //console.log('body:', temp); // Print the HTML for the Google homepage.
             if(response.statusCode == 404){
