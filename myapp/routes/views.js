@@ -6,6 +6,7 @@ function getRandomImage() {
     var n = Math.floor(Math.random() * 6) + 1; //1~4
     return "/images/"+n+".jpg";
 }
+
 function index(app) {
     app.get('/',function(req,res) {
         res.render('index',{url:getRandomImage()});
