@@ -139,7 +139,8 @@ body{
          position: relative;
          top: 0px;
          padding: 0 30px;
-         max-height: 28%;
+         height: 97px;
+         
          width: auto;
          font-size: 10px;
      }

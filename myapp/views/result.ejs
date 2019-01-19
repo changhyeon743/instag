@@ -83,10 +83,13 @@
 
         document.getElementById("actionBtn").addEventListener('click', function () {
             let str = hashtagsToString();
-            console.log(Clipboard.copy(str));
+            //Clipboard.copy(str)
+            
+            prompt("iOS에서는 직접 복사를 해야합니다. 아래 내용을 드래그해 복사해주세요.",str);
 
             if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
-                prompt("iOS에서는 직접 복사를 해야합니다. 아래 내용을 드래그해 복사해주세요.",str);
+                
+                //prompt("iOS에서는 직접 복사를 해야합니다. 아래 내용을 드래그해 복사해주세요.",str);
             }
         })
 
