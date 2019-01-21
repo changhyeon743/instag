@@ -96,6 +96,10 @@ img.left {
 }
 
 @media (max-width: 480px) {
+    #contact > a > img{
+        filter: invert(1);
+    }
+
     .left {
         width: 100%;
         float: clear;
