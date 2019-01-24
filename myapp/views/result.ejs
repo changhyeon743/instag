@@ -104,8 +104,6 @@
         document.getElementById("actionBtn").addEventListener('click', function () {
             let str = hashtagsToString();
             //Clipboard.copy(str)
-            prompt("iOS에서는 직접 복사를 해야합니다. 아래 내용을 드래그해 복사해주세요.", str);
-
             var iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
             if (iOS) {
                 prompt("iOS에서는 직접 복사를 해야합니다. 아래 내용을 드래그해 복사해주세요.", str);
