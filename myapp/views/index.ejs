@@ -18,10 +18,34 @@
     </script>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
-      (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-1246010458851705",
-        enable_page_level_ads: true
-      });
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-1246010458851705",
+            enable_page_level_ads: true
+        });
+    </script>
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script>
+        var language = window.navigator.userLanguage || window.navigator.language;
+        var lang = language.substr(0, 2).toLowerCase();
+        $(document).ready(function ($) {
+            $('body').addClass(lang);
+
+            if ($('body').hasClass('ko')) {
+                $('.subtitle').html("<br><br> The connection between word and hashtags")
+                $('.content').html("<br><br><br>\
+                    \
+                    Helps you to find and copy hash tags\
+                    <br>that are used today with the hashtag which you typed\
+                    <br><br>\
+                    Click the button after thinking topic hashtag.\
+                "
+                )
+                $('.start').html("Start")
+            }
+            else if ($('body').hasClass('en')) {
+                
+            }
+        });
     </script>
 </head>
 
@@ -57,7 +81,7 @@
                 </span>
                 <br><br><br>
 
-                
+
                 <a href="/search"><button class="start" id="start">시작하기</button></a>
 
 
@@ -65,7 +89,9 @@
         </div>
     </div>
 
-    <span id="contact"><a href="mailto:changhyeon743@gmail.com" target="_top"><img src="images/contact.svg"></a>&nbsp;&nbsp;<a href="https://www.instagram.com/instag.kr/" target="_top"><img src="images/instagram.svg"></a> <a href="https://www.facebook.com/Instaggapp" target="_new"><img src="images/facebook.svg"></a></span>
+    <span id="contact"><a href="mailto:changhyeon743@gmail.com" target="_top"><img src="images/contact.svg"></a>&nbsp;&nbsp;<a
+            href="https://www.instagram.com/instag.kr/" target="_top"><img src="images/instagram.svg"></a> <a href="https://www.facebook.com/Instaggapp"
+            target="_new"><img src="images/facebook.svg"></a></span>
 </body>
 
 </html>
