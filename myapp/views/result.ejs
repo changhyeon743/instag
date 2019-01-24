@@ -1,4 +1,4 @@
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -20,9 +20,9 @@
             for (let i = 0; i < list.length; i++) {
                 list[i].style.borderColor = col;
             }
-            var hsla = col.replace("hsl","hsla");
-            hsla = hsla.replace(")",",0.3)");
-            document.getElementById("actionBtn").style.boxShadow = "8px 10px 12px 0 "+hsla;
+            var hsla = col.replace("hsl", "hsla");
+            hsla = hsla.replace(")", ",0.3)");
+            document.getElementById("actionBtn").style.boxShadow = "8px 10px 12px 0 " + hsla;
             document.getElementById("actionBtn").style.backgroundColor = col;
         }
     </script>
@@ -35,7 +35,25 @@
 
         gtag('config', 'UA-102593791-1');
     </script>
-    
+
+    <script>
+        var language = window.navigator.userLanguage || window.navigator.language;
+        var lang = language.substr(0, 2).toLowerCase();
+        $(document).ready(function ($) {
+            $('body').addClass(lang);
+
+            if ($('body').hasClass('ko')) {
+                
+            }
+            else if ($('body').hasClass('en')) {
+                $("#text").html("We found " + $('.small_box').length + " hashtags which are used today with " + $('.tag').html());
+                $("#actionBtn").html("Copy all");
+                $("text").each(function(index,element){
+                    $( element ).html($( element ).attr("count")+" posts which<br>are using '"+$( element ).attr("name")+"'");
+                })
+            }
+        });
+    </script>
 </head>
 
 <body onload="setColor()">
@@ -43,11 +61,13 @@
         <% for (var i = 0; i < datas.length; i++) { %>
         <div class="small_box">
             <br><br>
-            <span class="title"><%= datas[i].name %></span>
+            <span class="title">
+                <%= datas[i].name %></span>
             <br>
-            최근 ‘
-            <%= datas[i].name %>’ 태그가 <br>포함된 게시글
-            <%= datas[i].count %>개
+            <text name=<%= datas[i].name %> count=<%= datas[i].count %> >
+                이(가) 포함된 게시글
+                <%= datas[i].count %>개
+            </text>
             <br><br><br>
         </div>
         <% } %>
@@ -64,8 +84,8 @@
                 <span class="tag">'
                     <%= tag %> '</span><br>
                 <br>
-                와(과) 가장 최근에 함께 쓰인 해시태그
-                <%= datas.length %>개를 찾았습니다.
+                <span id="text">와(과) 가장 최근에 함께 쓰인 해시태그
+                    <%= datas.length %>개를 찾았습니다.</span>
                 <br>
                 <!--아래 버튼을 눌러 클립보드에 복사하세요.-->
                 <br>
@@ -74,21 +94,21 @@
             <button id="actionBtn" class="clipboard" data-clipboard-text="script:hashtagsToString()">태그 전부 복사</button>
         </div>
     </div>
-    <script src = "https://cdn.jsdelivr.net/clipboard.js/1.5.3/clipboard.min.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.3/clipboard.min.js"></script>
+
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             var clipboard = new Clipboard('.clipboard');
-            $("#actionBtn").attr('data-clipboard-text',hashtagsToString())
+            $("#actionBtn").attr('data-clipboard-text', hashtagsToString())
         })
 
         document.getElementById("actionBtn").addEventListener('click', function () {
             let str = hashtagsToString();
             //Clipboard.copy(str)
-            
+
             var iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
             if (iOS) {
-                prompt("iOS에서는 직접 복사를 해야합니다. 아래 내용을 드래그해 복사해주세요.",str);
+                prompt("iOS에서는 직접 복사를 해야합니다. 아래 내용을 드래그해 복사해주세요.", str);
                 //prompt("iOS에서는 직접 복사를 해야합니다. 아래 내용을 드래그해 복사해주세요.",str);
             }
         })

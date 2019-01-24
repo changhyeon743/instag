@@ -139,7 +139,7 @@ body{
          position: relative;
          top: 0px;
          padding: 0 30px;
-         height: 97px;
+         height: 28%;
          
          width: auto;
          font-size: 10px;
@@ -183,6 +183,12 @@ body{
         height: 52px;
         width: 87%;
         transform: translate(-50%, -50%);
+    }
+}
+
+@media(max-height:600px) {
+    .small_box {
+        height: 97px;
     }
 }
 

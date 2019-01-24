@@ -44,6 +44,21 @@
 
         gtag('config', 'UA-102593791-1');
     </script>
+    <script>
+        var language = window.navigator.userLanguage || window.navigator.language;
+        var lang = language.substr(0, 2).toLowerCase();
+        $(document).ready(function ($) {
+            $('body').addClass(lang);
+
+            if ($('body').hasClass('ko')) {
+                
+            }
+            else if ($('body').hasClass('en')) {
+                $(".search-text").attr("placeholder","Type a topic hashtag.")
+                $(".notice").html("[TIP] You can use topic:amount(ex:OOTD:15) to search more.")
+            }
+        });
+    </script>
 </head>
 
 <body>
@@ -60,7 +75,7 @@
 
     <img class="home" src="images/home.svg" alt="" onclick="window.open('http://instag.kr');">
 
-    <p class="notice">[TIP] 검색어:검색할 양 (주제:15)식으로도 검색할 수 있습니다.</p>
+    <p class="notice">[TIP] 검색어:검색할 양 (OOTD:15)식으로도 검색할 수 있습니다.</p>
 
 </body>
 
