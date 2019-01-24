@@ -193,6 +193,7 @@ body{
 
 @media(max-height:500px) {
     .small_box {
+        height: 28%;
         padding: 0 30px 30px;
     }
     #actionBtn {
