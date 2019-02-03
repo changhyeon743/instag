@@ -54,7 +54,7 @@
                 
             }
             else {
-                $(".search-text").attr("placeholder","Type a topic hashtag.")
+                $(".search-text").attr("placeholder","Type a topic hashtag.(ex: OOTD)")
                 $(".notice").html("[TIP] You can use topic:amount(ex:OOTD:15) to search more.")
             }
         });
@@ -67,7 +67,7 @@
 
     <div class="search-box">
         <input type="text" name="" class="search-text" id="search" onkeypress="if(event.keyCode==13) {search(); return false;}"
-            placeholder="주제 단어를 입력해주세요."/>
+            placeholder="주제 단어를 입력해주세요.(ex: 일상, OOTD)"/>
         <div class="search-btn-box">
             <img class="search-btn" src="images/search_btn.svg" id="btn_s" onclick="search()">
         </div>
