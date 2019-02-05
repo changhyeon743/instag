@@ -27,7 +27,7 @@ body{
 
 .content {
     position: absolute;
-    top: 407px;
+    top: 45%;
     font-family: "NotoSans-Regular";
     font-size: 22px;
     font-weight: normal;
@@ -76,7 +76,7 @@ body{
 
 .rediv {
     position: absolute;
-    top: 157px;
+    top: 16%;
 }
 
 #actionBtn {
@@ -156,7 +156,7 @@ body{
     }
     .rediv {
         position: fixed;
-        top: 42px;
+        top: 5%;
         left: 24px;
     }
 
