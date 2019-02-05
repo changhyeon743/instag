@@ -80,7 +80,7 @@
             </div>
 
             <div class="content">
-                <span class="tag">'
+                <span class="tag" na=<%= tag %>>'
                     <%= tag %> '</span><br>
                 <br>
                 <span id="text">와(과) 가장 최근에 함께 쓰인 해시태그
@@ -114,11 +114,15 @@
 
         function hashtagsToString() {
             var titles = document.getElementsByClassName("title");
-            var str = "";
+            var str = "#";
+            var hashtag = (document.getElementsByClassName("tag")[0].getAttribute("na"));
+            str+=hashtag+" ";
 
             for (var i = 0; i < titles.length; i++) {
                 str += titles[i].innerHTML + " ";
             }
+
+            str+= " #instagkr"
 
             return str;
         }
