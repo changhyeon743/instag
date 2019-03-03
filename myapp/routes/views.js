@@ -13,6 +13,11 @@ function index(app) {
         res.render('search',{style:"background:url("+getRandomImage()+" center"});
     })
 
+    app.get('/help',function(req,res) {
+        res.render('index',{url:getRandomImage()});
+        //res.render('search',{style:"background:url("+getRandomImage()+" center"});
+    })
+
     app.get('/search',function(req,res) {
         res.render('search',{style:"background:url("+getRandomImage()+" center"});
     })
