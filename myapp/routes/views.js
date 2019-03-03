@@ -9,7 +9,8 @@ function getRandomImage() {
 
 function index(app) {
     app.get('/',function(req,res) {
-        res.render('index',{url:getRandomImage()});
+        //res.render('index',{url:getRandomImage()});
+        res.render('search',{style:"background:url("+getRandomImage()+" center"});
     })
 
     app.get('/search',function(req,res) {
