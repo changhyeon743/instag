@@ -28,7 +28,7 @@ function index(app) {
             count = req.query.count;
         }
         
-        request(encodeURI("http://localhost:3000/hashtags/"+req.params.tag+"?count="+count), function (error, response, body) {
+        request(encodeURI("https://localhost:3000/hashtags/"+req.params.tag+"?count="+count), function (error, response, body) {
             //console.log('body:', temp); // Print the HTML for the Google homepage.
             if(response.statusCode == 404){
                 res.render('result',{count: 0,datas: [],tag:"잘못된 태그입니다. (공백 X)"});
