@@ -16,7 +16,6 @@ function index(app) {
     request(url, function (error, response, body) {
       //TODO: variable names
       if (error) throw error
-      console.log(response)
       let $ = cheerio.load(body);
 
       
@@ -50,7 +49,8 @@ function index(app) {
             captions.push(temp["node"]["text"]);
           }
         });
-
+        console.log("log start ::::")
+        console.log(captions)
 
         //captions에서 정규표현식을 이용해 해쉬태그 추출
         let hashtags = [];
