@@ -23,7 +23,7 @@ function index(app) {
       //HTML data: 가공되지 않은 데이터
       //replace, slice 는 json 형태로 만들기 위해 필요한 코드.
       let htmlData = $('body').children().next().html().replace('window._sharedData = ', '').slice(0, -1);
-      console.log(htmlData)
+     
       let isError = false;
       ///htmlData 를 json으로 파싱
       let jsonData = null;
@@ -33,7 +33,7 @@ function index(app) {
         console.error(err);
         isError = true;
       }
-
+      console.log(jsonData)
       if (jsonData==null) {
         res.sendStatus(404);
       }
