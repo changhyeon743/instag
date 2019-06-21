@@ -16,6 +16,7 @@ function index(app) {
     request(url, function (error, response, body) {
       //TODO: variable names
       if (error) throw error
+      console.log(response)
       let $ = cheerio.load(body);
 
       console.log($)
