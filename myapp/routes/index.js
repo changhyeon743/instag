@@ -18,7 +18,8 @@ function index(app) {
       if (error) throw error
       let $ = cheerio.load(body);
 
-      print($('body'))
+      // console.log($('body').children()[0])
+      console.log($('script:not([src])')[0].parent.children[0].parent.children[0].parent.children[0].parent.children[1]);
       //HTML data: 가공되지 않은 데이터
       //replace, slice 는 json 형태로 만들기 위해 필요한 코드.
       let htmlData = $('body').children().next().html().replace('window._sharedData = ', '').slice(0, -1);
@@ -32,7 +33,7 @@ function index(app) {
         console.error(err);
         isError = true;
       }
-      console.log(jsonData)
+      //console.log(jsonData)
       if (jsonData==null) {
         res.sendStatus(404);
       }
@@ -49,8 +50,8 @@ function index(app) {
             captions.push(temp["node"]["text"]);
           }
         });
-        console.log("log start ::::")
-        console.log(captions)
+        // console.log("log start ::::")
+        // console.log(captions)
 
         //captions에서 정규표현식을 이용해 해쉬태그 추출
         let hashtags = [];
@@ -117,4 +118,3 @@ function index(app) {
   });
 
 }
-
