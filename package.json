@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^0.21.2"
   },
   "devDependencies": {
     "@types/cheerio": "^0.22.23"
